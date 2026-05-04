@@ -1,0 +1,465 @@
+/* --- 1. ΜΕΤΑΒΛΗΤΕΣ & ΓΕΝΙΚΑ --- */
+:root {
+    --primary-color: #8d2b2b;
+    --accent-orange: #ffa500;
+    --header-dark: #222222; 
+    --paper-color: #fffef0;
+    --text-dark: #333;
+    --like-red: #ff4d4d;
+}
+
+body {
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: var(--text-dark);
+}
+
+/* --- 2. ΦΟΝΤΟ ΣΕΛΙΔΩΝ --- */
+body:has(.book-container) {
+    background: url('BG.jpeg') no-repeat center center fixed;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.index-body {
+    background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), 
+                url('Main.jpg') no-repeat center center fixed;
+    background-size: cover;
+    min-height: 100vh;
+}
+
+/* --- 3. NAVBAR --- */
+.main-header {
+    background: var(--header-dark);
+    color: white;
+    padding: 12px 0;
+    position: relative;
+    z-index: 1000;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 95%;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.nav-left, .nav-right, .nav-center { flex: 1; display: flex; align-items: center; }
+.nav-left { justify-content: flex-start; gap: 15px; }
+.nav-center { justify-content: center; }
+.nav-right { justify-content: flex-end; gap: 20px; }
+
+.main-title { color: white !important; margin: 0; font-size: 1.6rem; }
+.nav-right a { color: var(--accent-orange) !important; text-decoration: none; font-weight: bold; }
+
+
+/* --- 5. Η ΚΑΡΤΑ-ΒΙΒΛΙΟ --- */
+.recipe-card.book-style {
+    display: flex;
+    flex-direction: row;
+    background: #d4c4a8;
+    padding: 12px;
+    border-radius: 10px;
+    box-shadow: 0 25px 50px rgba(0,0,0,0.5);
+    gap: 4px;
+    width: 100%;
+    min-height: 650px; 
+}
+
+.page {
+    flex: 1;
+    background: var(--paper-color);
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow-y: visible; 
+}
+
+.page-text {
+    flex-grow: 1; 
+    overflow-y: auto; 
+    padding-right: 10px;
+    margin-bottom: 15px;
+    max-height: 400px; 
+}
+
+/* Custom scrollbar για το κείμενο */
+.page-text::-webkit-scrollbar {
+    width: 4px;
+}
+.page-text::-webkit-scrollbar-thumb {
+    background: #d4c4a8;
+    border-radius: 10px;
+}
+
+.page-left { border-radius: 5px 0 0 5px; box-shadow: inset -20px 0 30px rgba(0,0,0,0.05); }
+.page-right { border-radius: 0 5px 5px 0; box-shadow: inset 20px 0 30px rgba(0,0,0,0.05); }
+
+.page .recipe-img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 4px;
+    margin-bottom: 20px;
+}
+
+.recipe-footer {
+    margin-top: auto;
+    padding-top: 15px;
+    border-top: 1px solid #e8e0d0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: var(--paper-color);
+    z-index: 5;
+}
+
+/* --- 6. ΣΧΟΛΙΑ & LIKE --- */
+.comments-inside-book {
+    margin-top: 20px;
+    background: rgba(0,0,0,0.02);
+    padding: 10px;
+    border-radius: 8px;
+}
+
+.comments-list {
+    max-height: 120px;
+    overflow-y: auto;
+    margin-bottom: 10px;
+}
+
+.single-comment { font-size: 0.85rem; padding: 4px 0; border-bottom: 1px solid rgba(0,0,0,0.03); }
+
+.recipe-footer {
+    padding-top: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* --- 7. SEARCH BAR --- */
+.search-section {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 30px;
+}
+
+.search-container {
+    position: relative;
+    width: 100%;
+    max-width: 500px;
+    background: white;
+    padding: 10px 20px;
+    border-radius: 50px;
+    display: flex;
+    align-items: center;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+}
+
+#recipeSearch {
+    border: none;
+    outline: none;
+    width: 100%;
+    font-size: 1.1rem;
+    background: transparent;
+}
+
+.search-hint {
+    position: absolute;
+    bottom: -25px;
+    left: 25px;
+    font-size: 0.85rem;
+    color: white;
+}
+
+/* ΚΟΥΜΠΙΑ ΠΛΟΗΓΗΣΗΣ */
+.nav-btn {
+    background-color: var(--accent-orange) !important;
+    color: white !important;
+    border: none;
+    font-size: 2rem;
+    padding: 15px 22px;
+    cursor: pointer;
+    border-radius: 50%;
+    z-index: 100;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0; 
+    margin: 0 30px;
+}
+
+/* Εφέ Hover */
+.nav-btn:hover {
+    background-color: var(--primary-color) !important;
+    transform: scale(1.2);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+}
+
+/* Responsive: Σε μικρές οθόνες φέρνουμε τα βελάκια πιο κοντά για να μην βγαίνουν εκτός */
+@media (max-width: 1200px) {
+    .book-slider-wrapper {
+        padding: 0 20px;
+    }
+    .nav-btn {
+        margin: 0 10px;
+    }
+}
+
+/* --- 4. Η ΦΟΡΜΑ-ΒΙΒΛΙΟ (AUTH.PHP) --- */
+.book-container { 
+    perspective: 1500px; 
+    width: 400px; 
+    height: 580px; 
+    margin: auto;
+}
+
+.book-inner {
+    position: relative; 
+    width: 100%; 
+    height: 100%;
+    transition: transform 0.8s cubic-bezier(0.645, 0.045, 0.355, 1);
+    transform-style: preserve-3d; 
+    transform-origin: center left;
+}
+
+.book-inner.flipped { transform: translateX(100%) rotateY(-180deg); }
+
+.book-page {
+    position: absolute; 
+    width: 100%; 
+    height: 100%; 
+    backface-visibility: hidden;
+    background: var(--paper-color); 
+    border: 1px solid #d4c4a8;
+    box-shadow: inset 30px 0 50px rgba(0,0,0,0.1), 5px 5px 15px rgba(0,0,0,0.2);
+    border-radius: 5px 15px 15px 5px; 
+    padding: 40px; 
+    box-sizing: border-box;
+    display: block !important; 
+}
+
+.book-page::before {
+    content: "";
+    position: absolute;
+    left: 0; top: 0; width: 25px; height: 100%;
+    background: linear-gradient(to right, #5d1c1c, #8d2b2b);
+    border-radius: 5px 0 0 5px;
+}
+
+.register-page { transform: rotateY(180deg); }
+.register-page::before { left: auto; right: 0; border-radius: 0 5px 5px 0; }
+
+/* --- 5. 3D PAGE FLIP SLIDER (INDEX.PHP) --- */
+.book-slider-wrapper {
+    position: relative;
+    width: 100%;
+    max-width: 1300px; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 40px auto;
+    padding: 0 50px; 
+    box-sizing: border-box;
+}
+
+.recipe-slider {
+    
+    max-width: 1100px;
+    width: 100%;
+    perspective: 2000px;
+    min-height: 650px;
+    position: relative;
+    z-index: 5;
+}
+
+
+.recipe-slide {
+    position: absolute;
+    width: 100%;
+    height: auto;
+    min-height: 100%;
+    top: 0;
+    left: 0;
+    display: none; 
+    transform-style: preserve-3d;
+    transform-origin: left center;
+    transition: transform 0.8s cubic-bezier(0.645, 0.045, 0.355, 1), opacity 0.5s;
+}
+
+
+.recipe-slide.active, 
+.recipe-slide.flipped, 
+.recipe-slide.upcoming {
+    display: block !important;
+}
+
+.recipe-slide.active {
+    z-index: 10;
+    opacity: 1;
+    transform: rotateY(0deg);
+}
+
+.recipe-slide.flipped {
+    z-index: 1;
+    opacity: 0;
+    transform: rotateY(-180deg);
+}
+
+
+.recipe-card.book-style {
+    display: flex;
+    flex-direction: row;
+    background: #d4c4a8;
+    padding: 12px;
+    border-radius: 10px;
+    box-shadow: 0 25px 50px rgba(0,0,0,0.5);
+    gap: 4px;
+    min-height: 650px;
+}
+
+.page {
+    flex: 1;
+    background: var(--paper-color);
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden; 
+}
+
+
+.page-text {
+    flex: 1;
+    overflow-y: auto;
+    margin-bottom: 10px;
+    padding-right: 5px;
+}
+
+
+.recipe-footer {
+    margin-top: auto;
+    padding-top: 15px;
+    border-top: 1px solid #e8e0d0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.auth-form button, 
+.register-btn {
+    background-color: var(--accent-orange) !important;
+    color: white !important;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 30px !important; 
+    font-weight: bold;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: 100%; 
+    margin-top: 15px;
+    box-shadow: 0 4px 12px rgba(255, 165, 0, 0.3);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.auth-form button:hover, 
+.register-btn:hover {
+    background-color: #e69500 !important;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(255, 165, 0, 0.4);
+}
+
+.auth-footer {
+    background-color: var(--accent-orange);
+    color: white !important;
+    padding: 15px;
+    border-radius: 12px;
+    text-align: center;
+    margin-top: 25px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.auth-footer a {
+    color: white !important;
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+.upload-container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; 
+    width: 100%;
+    min-height: 100vh;
+    padding: 60px 20px; 
+    box-sizing: border-box;
+}
+
+.upload-card {
+    width: 100%;
+    max-width: 750px;
+    min-height: 600px;
+    background: var(--paper-color);
+    padding: 50px 60px;
+    border-radius: 0 20px 20px 0; 
+    box-shadow: 0 20px 45px rgba(0,0,0,0.5);
+    position: relative;
+    margin: 0 auto;
+    border-left: none; 
+}
+.upload-card input[type="text"],
+.upload-card textarea {
+    width: 100%;
+    padding: 15px;
+    margin: 15px 0;
+    border: 1px solid #d4c4a8;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.5);
+    font-size: 1.05rem;
+    box-sizing: border-box; 
+}
+
+.upload-card textarea {
+    min-height: 200px; 
+}
+
+.upload-card::before {
+    content: "";
+    position: absolute;
+    left: 0; 
+    top: 0; 
+    width: 30px;
+    height: 100%;
+    background: linear-gradient(to right, #5d1c1c, #8d2b2b); 
+    border-radius: 5px 0 0 5px; 
+}
+
+
+.upload-card form {
+    margin-left: 10px;
+}
+
+
+.handwritten-title {
+    font-size: 2.2rem; 
+    font-family: 'Georgia', serif;
+    color: var(--primary-color);
+    text-align: center;
+    margin-bottom: 35px;
+    border-bottom: 3px double #d4c4a8;
+    padding-bottom: 15px;
+}
