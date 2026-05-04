@@ -1,6 +1,6 @@
 # Recipe Blog Project 🍳
 
-Ένα πλήρως λειτουργικό και δυναμικό Blog συνταγών μαγειρικής, υλοποιημένο με **PHP, MySQL, HTML5, CSS3** και **JavaScript**. Το project διαθέτει ένα πρωτότυπο UI σε μορφή βιβλίου και επιτρέπει την πλήρη αλληλεπίδραση των χρηστών.
+Ένα πλήρως λειτουργικό και δυναμικό Blog συνταγών μαγειρικής, υλοποιημένο με **PHP, MySQL, HTML5, CSS** και **JavaScript**. Το project διαθέτει ένα πρωτότυπο UI σε μορφή βιβλίου και επιτρέπει την πλήρη αλληλεπίδραση των χρηστών.
 
 ## 🚀 Λειτουργίες
 
@@ -15,6 +15,6 @@
 ## 🛠️ Τεχνολογίες
 
 - **Backend:** PHP (Σύνδεση με MySQL μέσω PDO/MySQLi).
-- **Frontend:** HTML5, CSS3, JavaScript (Vanilla/jQuery).
+- **Frontend:** HTML5, CSS, JavaScript.
 - **Βάση Δεδομένων:** MySQL (μέσω XAMPP/phpMyAdmin).
 - **Assets:** Google Fonts & Font Awesome (μέσω Cloudflare CDN).
